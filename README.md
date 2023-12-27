@@ -38,6 +38,6 @@ The name of the files are self-explanatory, so I make it brief. The audio fronte
 The full model leverages a frontend and a pretrained EfficientNet-B0. It is implemented in 'model.py'. The training and model configurations can be set in `cli.py` or by command line as described above.
 
 The `utils.py` contains helper functions:
-*`RiseRunDecayScheduler`
+* `RiseRunDecayScheduler`
 
 for training, validation, testing on noisy dataset, creating and saving plots such as frontends filters and confusion matrix, and some utility for preparing the train, validation, and test sets meta data using the 
