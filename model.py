@@ -45,11 +45,3 @@ class Net(nn.Module):
         x = self.backend(x)  # B, 1280
         logits = self.fc(x)  # B, num_classes
         return logits
-
-    # @torch.inference_mode()
-    # def _embed(self, x):
-    #     front_z = self.frontend(x)
-    #     front_z.unsqueeze_(1)
-    #     backend_z = self.backend(front_z)
-    #     return front_z, backend_z
-    
