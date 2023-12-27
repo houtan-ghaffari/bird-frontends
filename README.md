@@ -10,7 +10,7 @@ For the environmental noise recordings, download the [ESC-50](https://github.com
 ## How to Use
 It would be easier if you open the project in an IDE like PyCharm, and change the arguments in `cli.py`. Then, you only need to run the `main.py`. However, it is also possible to run it from terminal/command line like this:
 ```
-python main.py --fe leaf --n-filters 80 --sr 32000 --fft 512 --hop 320 --augment --pcen --normalizer minmax --device cuda --epochs 100 --trnw 48 --vanw 16 --tenw 8
+python main.py --fe leaf --n-filters 80 --sr 32000 --fft 512 --hop 320 --augment --pcen --normalizer minmax --device cuda --epochs 100 --trnw 54 --vanw 16 --tenw 16
 ```
 You can edit the default value of the arguments in `cli.py` and simply run:
 ```
