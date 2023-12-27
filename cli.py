@@ -14,14 +14,14 @@ def create_parser():
                         default='mel', help='select the frontend to use.')
     parser.add_argument('--device', default='cuda', type=str)
     parser.add_argument('--epochs', default=100, type=int)
-    parser.add_argument('--trnw', default=8, type=int,
+    parser.add_argument('--trnw', default=32, type=int,
                         help='number of workers for train set DataLoader (default: %(default)i).')
     parser.add_argument('--tenw', default=8, type=int,
                         help='number of workers for test set DataLoader (default: %(default)i).')
     parser.add_argument('--vanw', default=8, type=int,
                         help='number of workers for validation set DataLoader (default: %(default)i).')
-    parser.add_argument('--augment', type=bool, default=True)
-    parser.add_argument('--pcen', type=bool, default=True)
+    parser.add_argument('--augment', default=False, action='store_true')
+    parser.add_argument('--pcen', default=False, action='store_true')
     parser.add_argument('--normalizer', default='minmax', choices=['minmax', 'standard', None])
     parser.add_argument('--noise-dir', type=str, default='ESC-50-master',
                         help='path to ESC-50 recordings.')
