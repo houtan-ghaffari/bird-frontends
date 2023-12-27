@@ -33,4 +33,6 @@ Th arguments are:
 * `--tenw`: The number of DataLoader workers for the test set. If you have anough CPUs, 16 is a good choice.
 
 ## How the code is structured
-fronend contains codes for each type of the audio frontend 
+The name of the files are self-explanatory, so I make it brief. The audio frontends are in the `fronend` folder. LEAF is implemented in `leaf.py`, SincNet in 'sincnet.py', and mel-spectrogram and spectrogram in `spec.py`. Other files implement the PCEN (`pcen.py`), normalization methods (`normalizers.py`), and Gaussian pooling (`poolings.py`).
+
+The full model leverages a frontend and a pretrained EfficientNet-B0, and it is implemented in 'model.py'. backend contains codes for each type of the audio frontend 
