@@ -56,6 +56,17 @@ The `utils.py` contains helper functions:
 * `validate_long_files`: evaluation of the full-length recording for test set dataloader. See the paper methodology section to see why there are different evaluation functions.
 * `noisy_validate`: mixes the ESC-50 dataset with bird recordings test set at multiple SNR ratios for noise robustness analysis.
 
+## Libraries
+The the libraries that we used are:
+* `torch: 2.0.0`
+* numpy: 1.23.5
+* pandas: 1.5.3
+* torchaudio: 2.0.0
+* torchvision: 0.15.0
+* matplotlib: 3.7.1
+* tqdm: 3.7.1
+* scikit-learn: 1.2.2
+
 # Citation
 Consider citing the following paper if you used our results in your work:
 `to be filled upon publication.`
