@@ -1,5 +1,7 @@
-# Role of Audio Frontends in Bird Species Recognition
-This repository contains code for the paper Role of Audio Frontends in Bird Species Recognition.
+# On the Role of Audio Frontends in Bird Species Recognition
+This repository contains code for the paper On the Role of Audio Frontends in Bird Species Recognition by Houtan Ghaffari and Paul Devos.
+
+## Summary
 
 ## Dataset
 For the bird recordings, please use the **xc.csv** metadata to download them from [Xeno-Canto](https://xeno-canto.org/). They provide an API to download the files using code. You can easily find online python codes for downloading from Xeno-Canto.
@@ -35,9 +37,20 @@ Th arguments are:
 ## How the code is structured
 The name of the files are self-explanatory, so I make it brief. The audio frontends are in the `fronend` folder. LEAF is implemented in `leaf.py`, SincNet in 'sincnet.py', and mel-spectrogram and spectrogram in `spec.py`. Other files implement the PCEN (`pcen.py`), normalization methods (`normalizers.py`), and Gaussian pooling (`poolings.py`).
 
-The full model leverages a frontend and a pretrained EfficientNet-B0. It is implemented in 'model.py'. The training and model configurations can be set in `cli.py` or by command line as described above.
+The full model leverages a frontend and a pretrained EfficientNet-B0. It is implemented in 'model.py'. The training and model configurations can be set in `cli.py` or by command line as described above. The `main.py` glues everything together and runs the model.
 
 The `utils.py` contains helper functions:
 * `RiseRunDecayScheduler`: learning rate scheduler. You can have a linear warmup (Rise), a constant period (Run), and then a cosie decay curve (Decay). Example usage with a linear warmup of 10 epochs to reach the optimizer default/set learning rate, a constant period of 20 epochs with the default learning rate, and then decaying to 0 in 100 epochs with the possibility of maintaining a minimum learning rate set by user:`scheduler = RiseRunDecayScheduler(optimizer, steps_in_epoch=len(train_loader), warmup=10, constant=20, total_epochs=100, lowest_lr=1e-5)`.
+* `plot_leaf_filters`: creates and saves the LEAF frontend filters, like figures 5 and 7 in the paper. It runs by default when using leaf frontend, unless you modify the `main.py`.
+* `plot_sinc_filters`: Same as the one above but for SincNet.
+* `plot_cm`: creates and saves confusion matrix.
+* `load_data`: loads the **xc.csv** and splits it into train, validation, and test sets.
+* `df_split`: helps the above function for splitting.
+* `train_step`: performs one epoch of training.
+* `validate`: evaluation using validation set dataloader.
+* `validate_long_files`: evaluation of the full-length recording for test set dataloader. See the paper methodology section to see why there are different evaluation functions.
+* `noisy_validate`: mixes the ESC-50 dataset with bird recordings test set at multiple SNR ratios for noise robustness analysis.
 
-for training, validation, testing on noisy dataset, creating and saving plots such as frontends filters and confusion matrix, and some utility for preparing the train, validation, and test sets meta data using the 
+# Citation
+Consider citing the following paper if you used our results in your work:
+`to be filled upon publication.`
