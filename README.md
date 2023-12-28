@@ -9,10 +9,10 @@ An in-depth explanation was provided for each experiment, followed by a thorough
 Audio frontends that use waveforms might significantly increase computation time and latency. Therefore, a marginal improvement compared to using the (mel-)spectrogram should be necessary for the task to be considered a proper trade-off. Regardless, adapting the time-frequency representation to the dataset's characteristics and using physically informed filters are intriguing ideas for the discussed reasons in the paper. The topic deserves further research to build efficient learnable frontends for bioacoustics and identify the circumstances where they are appropriate.
 
 ## Dataset
-For the bird recordings, please use the **xc.csv** metadata to download them from [Xeno-Canto](https://xeno-canto.org/). They provide an API to download the files using code. You can easily find online python codes for downloading from Xeno-Canto.
-Afterward, put all the recordings in one folder, you can name it `xc_recordings` or something else. Then, open the `cli.py` file and change the default value of `--data-dir` argument  to the absolute path where your `xc_recordings` folder is. For example, `/username/home/datasets/xc_recordings`. 
+For the bird recordings, please use the **xc.csv** metadata to download them from [Xeno-Canto](https://xeno-canto.org/). They provide an API to download the files using code. You can easily find online Python codes for downloading from Xeno-Canto.
+Afterward, put all the recordings in one folder, you can name it `xc_recordings` or something less informative. Then, open the `cli.py` file and change the default value of the `--data-dir` argument to the absolute path where your `xc_recordings` folder is. For example, `/username/home/datasets/xc_recordings`. 
 
-For the environmental noise recordings, download the [ESC-50](https://github.com/karolpiczak/ESC-50) dataset. After unzipping the file, open the `cli.py` and change the default value of `--noise-dir` argument to the absolute path where your unzipped `ESC-50-master` is located. For example, `/username/home/datasets/ESC-50-master`.
+Download the [ESC-50](https://github.com/karolpiczak/ESC-50) dataset for the environmental noise recordings. After unzipping the dataset, open the `cli.py` and change the default value of the `--noise-dir` argument to the absolute path where your unzipped `ESC-50-master` is located. For example, `/username/home/datasets/ESC-50-master`.
 
 ## How to Use
 It would be easier if you open the project in an IDE like PyCharm, and change the arguments in `cli.py`. Then, you only need to run the `main.py`. However, it is also possible to run it from terminal/command line like this:
