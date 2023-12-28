@@ -13,7 +13,24 @@ Download the bird recordings (~34 GiB) from [Xeno-Canto](https://xeno-canto.org/
 
 Download the [ESC-50](https://github.com/karolpiczak/ESC-50) dataset for the environmental noise recordings. Either put the `ESC-50-master` inside the project directory or open the `cli.py` and change the default value of the `--noise-dir` argument to the absolute path where your unzipped `ESC-50-master` is located. For example, `/username/home/datasets/ESC-50-master`.
 
-## How to Use
+## How the code is structured
+The names of the files are self-explanatory, so I make it brief.
+* The data loading and processing is in `datautils\datapipe.py`.
+* The audio frontends are in the `frontend` folder. LEAF is implemented in `leaf.py`, SincNet in `sincnet.py`, and mel-spectrogram and spectrogram in `spec.py`. Other files implement the PCEN (`pcen.py`), normalization methods (`normalizers.py`), and Gaussian pooling (`poolings.py`).
+* The full model leverages a frontend and a pretrained EfficientNet-B0. It is implemented in `model.py`. The training and model configurations can be set in `cli.py` or by command line as described above. The `main.py` glues everything together and runs the model. 
+* The `utils.py` contains helper functions:
+  * `RiseRunDecayScheduler`: learning rate scheduler.
+  * `plot_leaf_filters`: creates and saves the LEAF frontend filters, like figures 5 and 7 in the paper. It runs by default when using the leaf frontend unless you modify the `main.py`.
+  * `plot_sinc_filters`: Same as the one above but for SincNet.
+  * `plot_cm`: creates and saves the confusion matrix.
+  * `load_data`: loads the **xc.csv** and splits it into train, validation, and test sets.
+  * `df_split`: helps the above function for splitting.
+  * `train_step`: performs one epoch of training.
+  * `validate`: evaluation using validation set dataloader.
+  * `validate_long_files`: evaluation of the full-length recordings for test set. See the paper methodology section to see why there are different evaluation functions.
+  * `noisy_validate`: mixes the ESC-50 dataset with bird recordings test set at multiple SNR ratios for noise robustness analysis.
+ 
+## How to use
 It would be easier if you open the project in an IDE like PyCharm, and change the arguments in `cli.py`. Then, you only need to run the `main.py`. However, it is also possible to run it from the terminal/command line like this:
 ```
 python main.py --fe leaf --n-filters 80 --sr 32000 --fft 512 --hop 320 --augment --pcen --normalizer minmax --device cuda --epochs 100 --trnw 54 --vanw 16 --tenw 16
@@ -39,23 +56,17 @@ The arguments are:
 * `--tenw`: The number of DataLoader workers for the test set. If you have enough CPUs, 16 is a good choice.
 
 The names for saving the models, logs, and plots are automatically and uniquely generated at each run. The state with highest macro averaged f1-score on the validation set will be saved.
-## How the code is structured
-The names of the files are self-explanatory, so I make it brief.
-* The data loading and processing is in `datautils\datapipe.py`.
-* The audio frontends are in the `frontend` folder. LEAF is implemented in `leaf.py`, SincNet in `sincnet.py`, and mel-spectrogram and spectrogram in `spec.py`. Other files implement the PCEN (`pcen.py`), normalization methods (`normalizers.py`), and Gaussian pooling (`poolings.py`).
-* The full model leverages a frontend and a pretrained EfficientNet-B0. It is implemented in `model.py`. The training and model configurations can be set in `cli.py` or by command line as described above. The `main.py` glues everything together and runs the model. 
-* The `utils.py` contains helper functions:
-  * `RiseRunDecayScheduler`: learning rate scheduler.
-  * `plot_leaf_filters`: creates and saves the LEAF frontend filters, like figures 5 and 7 in the paper. It runs by default when using the leaf frontend unless you modify the `main.py`.
-  * `plot_sinc_filters`: Same as the one above but for SincNet.
-  * `plot_cm`: creates and saves the confusion matrix.
-  * `load_data`: loads the **xc.csv** and splits it into train, validation, and test sets.
-  * `df_split`: helps the above function for splitting.
-  * `train_step`: performs one epoch of training.
-  * `validate`: evaluation using validation set dataloader.
-  * `validate_long_files`: evaluation of the full-length recordings for test set. See the paper methodology section to see why there are different evaluation functions.
-  * `noisy_validate`: mixes the ESC-50 dataset with bird recordings test set at multiple SNR ratios for noise robustness analysis.
 
+## Using another dataset
+If you want to use another dataset, you have to first provide the metadata as a csv file that can be loaded into a Pandas DataFrame. It should at least contains the following informations and columns:
+* The indices of the DataFrame should be ordered integers without gap.
+* A column for `path`: name of each recording file (e.g., rec1.mp3) if you put all of the recordings in one directory. If they are in subfolers, i.e., each recording in a subfolder with its species name, then `path` should be the path to that recording inside the parent directory, e.g., 'turdus_merula/rec1.mp3'.
+* A column for 'label': numerical training label of the recording. Each species should have a unique integer label starting from 0.
+* A column for 'length': duration of each recording in seconds.
+* A column for 'smp': sampling rate of each recording.
+* A column for 'gensp': The gen and species of each recording label, e.g., 'erithacus_rubecula', 'turdus_merula', etc.
+
+When you prepared this metadata, go to line 30 of `main.py` and change the `'xc.csv'` with your metadata path in `train_df, val_df, test_df = load_data('xc.csv', args.data_dir)`. Make sure the `--data-dir` argument in `cli.py` is set to your recordings parent directory. Best of luck and happy debugging!
 ## Libraries
 The libraries that we used are:
 * pytorch: 2.0.0
