@@ -38,7 +38,7 @@ The arguments are:
 * `--vanw`: The number of DataLoader workers for the validation set. If you have enough CPUs, 16 is a good choice.
 * `--tenw`: The number of DataLoader workers for the test set. If you have enough CPUs, 16 is a good choice.
 
-The names for saving the models, logs, and plots are automatically and uniquely generated at each run.
+The names for saving the models, logs, and plots are automatically and uniquely generated at each run. The state with highest macro averaged f1-score on the validation set will be saved.
 ## How the code is structured
 The names of the files are self-explanatory, so I make it brief.
 * The data loading and processing is in `datautils\datapipe.py`.
@@ -53,7 +53,7 @@ The names of the files are self-explanatory, so I make it brief.
   * `df_split`: helps the above function for splitting.
   * `train_step`: performs one epoch of training.
   * `validate`: evaluation using validation set dataloader.
-  * `validate_long_files`: evaluation of the full-length recording for test set dataloader. See the paper methodology section to see why there are different evaluation functions.
+  * `validate_long_files`: evaluation of the full-length recordings for test set. See the paper methodology section to see why there are different evaluation functions.
   * `noisy_validate`: mixes the ESC-50 dataset with bird recordings test set at multiple SNR ratios for noise robustness analysis.
 
 ## Libraries
