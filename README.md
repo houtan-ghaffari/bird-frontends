@@ -9,7 +9,7 @@ An in-depth explanation was provided for each experiment, followed by a thorough
 Audio frontends that use waveforms might significantly increase computation time and latency. Therefore, a marginal improvement compared to using the (mel-)spectrogram should be necessary for the task to be considered a proper trade-off. Regardless, adapting the time-frequency representation to the dataset's characteristics and using physically informed filters are intriguing ideas for the discussed reasons in the paper. The topic deserves further research to build efficient learnable frontends for bioacoustics and identify the circumstances where they are appropriate.
 
 ## Dataset
-For the bird recordings, please use the **xc.csv** metadata to download them from [Xeno-Canto](https://xeno-canto.org/). They provide an API to download the files using code. You can easily find online Python codes for downloading from Xeno-Canto.
+For the bird recordings, please use the **xc.csv** metadata to download them from [Xeno-Canto](https://xeno-canto.org/). They provide an API to download the files using code, don't do it manually. You easily find multiple online Python codes for downloading from Xeno-Canto.
 Afterward, put all the recordings in one folder, you can name it `xc_recordings` or something less informative. Then, open the `cli.py` file and change the default value of the `--data-dir` argument to the absolute path where your `xc_recordings` folder is. For example, `/username/home/datasets/xc_recordings`. 
 
 Download the [ESC-50](https://github.com/karolpiczak/ESC-50) dataset for the environmental noise recordings. After unzipping the dataset, open the `cli.py` and change the default value of the `--noise-dir` argument to the absolute path where your unzipped `ESC-50-master` is located. For example, `/username/home/datasets/ESC-50-master`.
@@ -69,5 +69,5 @@ The libraries that we used are:
 * scikit-learn: 1.2.2
 
 # Citation
-Consider citing the following paper if you used our results in your work:
+Kindly consider citing the following paper if our results were helpful to your work:
 `to be filled upon publication.`
