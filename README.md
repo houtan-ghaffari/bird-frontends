@@ -42,7 +42,7 @@ The names for saving the models, logs, and plots are automatically and uniquely 
 ## How the code is structured
 The names of the files are self-explanatory, so I make it brief. The audio frontends are in the `frontend` folder. LEAF is implemented in `leaf.py`, SincNet in `sincnet.py`, and mel-spectrogram and spectrogram in `spec.py`. Other files implement the PCEN (`pcen.py`), normalization methods (`normalizers.py`), and Gaussian pooling (`poolings.py`).
 
-The full model leverages a frontend and a pretrained EfficientNet-B0. It is implemented in 'model.py'. The training and model configurations can be set in `cli.py` or by command line as described above. The `main.py` glues everything together and runs the model.
+The full model leverages a frontend and a pretrained EfficientNet-B0. It is implemented in `model.py`. The training and model configurations can be set in `cli.py` or by command line as described above. The `main.py` glues everything together and runs the model.
 
 The `utils.py` contains helper functions:
 * `RiseRunDecayScheduler`: learning rate scheduler.
