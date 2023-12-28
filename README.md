@@ -1,7 +1,13 @@
 # On the Role of Audio Frontends in Bird Species Recognition
 This repository contains code for the paper On the Role of Audio Frontends in Bird Species Recognition by Houtan Ghaffari and Paul Devos.
 
-## Summary
+## Conclusion
+A detailed ablation study of the learnable and static audio frontends showed little benefit from data-driven frequency selectivity for bird vocalization. Nonetheless, the functional form of the learnable filters impacted the performance despite the homogeneity of frequency channels across the frontends. However, adequate normalization and compression operations reduced the performance gap between the frontends. In particular, PCEN, min-max normalization, and standardization made the models resilient against unseen environmental noise and consistently made the (mel-)spectrogram comparable to modern audio frontends.
+
+An in-depth explanation was provided for each experiment, followed by a thorough discussion of all the results to summarize the observations and practical findings. This work concludes that the (mel-)spectrogram combined with PCEN and a global normalization method is on par with learnable audio frontends that operate on the waveform. The findings may not apply to all animals and scenarios but should be valid for typical bird species recognition tasks.
+% An in-depth explanation was provided for each experiment, followed by a thorough discussion of all the results to summarize the observations and practical findings. This work concludes that the (mel-)spectrogram combined with PCEN and a global normalization method is as suitable for bird species classification as learnable audio frontends that operate on the waveform. The findings may not apply to all animals and scenarios but should be valid for typical bird species classification tasks.
+
+Audio frontends that use waveforms might significantly increase computation time and latency. Therefore, a marginal improvement compared to using the (mel-)spectrogram should be necessary for the task to be considered a proper trade-off. Regardless, adapting the time-frequency representation to the dataset's characteristics and using physically informed filters are intriguing ideas for the discussed reasons. The topic deserves further research to build efficient learnable frontends for bioacoustics and identify the circumstances where they are appropriate.
 
 ## Dataset
 For the bird recordings, please use the **xc.csv** metadata to download them from [Xeno-Canto](https://xeno-canto.org/). They provide an API to download the files using code. You can easily find online python codes for downloading from Xeno-Canto.
