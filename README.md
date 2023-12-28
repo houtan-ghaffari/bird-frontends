@@ -58,17 +58,18 @@ The arguments are:
 The names for saving the models, logs, and plots are automatically and uniquely generated at each run. The state with highest macro averaged f1-score on the validation set will be saved.
 
 ## Using another dataset
-If you want to use another dataset, you have to first provide the metadata as a csv file that can be loaded into a Pandas DataFrame. It should at least contains the following informations and columns:
-* The indices of the DataFrame should be ordered integers without gap.
-* A column for `path`: name of each recording file (e.g., rec1.mp3) if you put all of the recordings in one directory. If they are in subfolers, i.e., each recording in a subfolder with its species name, then `path` should be the path to that recording inside the parent directory, e.g., 'turdus_merula/rec1.mp3'.
+If you want to use another dataset, you have to first provide the metadata as a CSV file that can be loaded into a Pandas DataFrame. It should at least contain the following information and columns:
+* The indices of the DataFrame should be ordered integers without a gap.
+* A column for `path`: name of each recording file (e.g., rec1.mp3) if you put all of the recordings in one directory. If they are in subfolders, i.e., each recording in a subfolder with its species name, then `path` should be the path to that recording inside the parent directory, e.g., 'turdus_merula/rec1.mp3'.
 * A column for 'label': numerical training label of the recording. Each species should have a unique integer label starting from 0.
 * A column for 'length': duration of each recording in seconds.
 * A column for 'smp': sampling rate of each recording.
 * A column for 'gensp': The gen and species of each recording label, e.g., 'erithacus_rubecula', 'turdus_merula', etc.
 
-When you prepared this metadata, go to line 30 of `main.py` and change the `'xc.csv'` with your metadata path in `train_df, val_df, test_df = load_data('xc.csv', args.data_dir)`. Make sure the `--data-dir` argument in `cli.py` is set to your recordings parent directory. Best of luck and happy debugging!
+When you prepared this metadata, go to line 30 of `main.py` and change the `'xc.csv'` with your metadata path in `train_df, val_df, test_df = load_data('xc.csv', args.data_dir)`. Make sure the `--data-dir` argument in `cli.py` is set to your recordings parent directory.
 ## Libraries
 The libraries that we used are:
+* python: 3.10.10
 * pytorch: 2.0.0
 * numpy: 1.23.5
 * pandas: 1.5.3
