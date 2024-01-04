@@ -17,7 +17,7 @@ Download the [ESC-50](https://github.com/karolpiczak/ESC-50) dataset for the env
 The names of the files are self-explanatory, so I make it brief.
 * The data loading and processing is in `datautils\datapipe.py`.
 * The audio frontends are in the `frontend` folder. LEAF is implemented in `leaf.py`, SincNet in `sincnet.py`, and mel-spectrogram and spectrogram in `spec.py`. Other files implement the PCEN (`pcen.py`), normalization methods (`normalizers.py`), and Gaussian pooling (`poolings.py`).
-* The full model leverages a frontend and a pretrained EfficientNet-B0. It is implemented in `model.py`. Some of the training and model configurations can be set in `cli.py` or by command line as described above. The `main.py` glues everything together and runs the model. 
+* The full model leverages a frontend and a pretrained EfficientNet-B0. It is implemented in `model.py`. Some of the training and model configurations can be set in `cli.py` or by command line as described in the next section. The `main.py` glues everything together and runs the model. 
 * The `utils.py` contains helper functions:
   * `RiseRunDecayScheduler`: learning rate scheduler.
   * `plot_leaf_filters`: creates and saves the LEAF frontend filters, like figures 5 and 7 in the paper. It runs by default when using the leaf frontend unless you modify the `main.py`.
