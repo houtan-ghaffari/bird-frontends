@@ -82,7 +82,8 @@ The libraries that we used are:
 # Citation
 Kindly consider citing the following paper if our results were helpful to your work:
 
-`@article{GHAFFARI2024102573,
+```
+@article{GHAFFARI2024102573,
 title = {On the role of audio frontends in bird species recognition},
 journal = {Ecological Informatics},
 pages = {102573},
@@ -90,4 +91,5 @@ year = {2024},
 issn = {1574-9541},
 doi = {https://doi.org/10.1016/j.ecoinf.2024.102573},
 url = {https://www.sciencedirect.com/science/article/pii/S1574954124001158},
-author = {Houtan Ghaffari and Paul Devos}`
+author = {Houtan Ghaffari and Paul Devos}
+```
