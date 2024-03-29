@@ -1,5 +1,5 @@
 # On the Role of Audio Frontends in Bird Species Recognition
-This repository contains code for the paper [On the role of audio frontends in bird species recognition](https://www.sciencedirect.com/science/article/pii/S1574954124001158?via%3Dihub) by Houtan Ghaffari and Paul Devos.
+This repository contains code for the paper [On the role of audio frontends in bird species recognition](https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdoi.org%2F10.1016%2Fj.ecoinf.2024.102573&data=05%7C02%7CHoutan.Ghaffari%40UGent.be%7Cdc48c4f2ab784ead468a08dc4f7ba07c%7Cd7811cdeecef496c8f91a1786241b99c%7C1%7C0%7C638472640549558453%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=yjuEyf89WWj%2Fj4UUwbkRjWPtrs3MfoF7j0cPHFGOH3I%3D&reserved=0) by Houtan Ghaffari and Paul Devos.
 
 ## Summary
 It has been of concern that audio features such as mel-filterbanks might be inadequate for analyzing bird vocalization since they are designed based on human psychoacoustics. A detailed ablation study of the learnable and static audio frontends showed little benefit from data-driven frequency selectivity for bird vocalization. Nonetheless, the functional form of the learnable filters impacted the performance despite the homogeneity of frequency channels across the frontends. However, adequate normalization and compression operations reduced the performance gap between the frontends. In particular, PCEN, min-max normalization, and standardization made the models resilient against unseen environmental noise and consistently made the (mel-)spectrogram comparable to modern audio frontends.
@@ -86,6 +86,7 @@ Kindly consider citing the following paper if our results were helpful to your w
 @article{GHAFFARI2024102573,
 title = {On the role of audio frontends in bird species recognition},
 journal = {Ecological Informatics},
+volume = {81},
 pages = {102573},
 year = {2024},
 issn = {1574-9541},
